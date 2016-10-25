@@ -18,12 +18,12 @@
     under the License.
 -->
 
-<project name="Bookmarks" default="dist" basedir=".">
+<project name="Scheduler" default="dist" basedir=".">
 	<description>
         Ant build file for Wink example Bookmarks
     </description>
 
-	<property name="final.war.name" value="Bookmarks.war" />
+	<property name="final.war.name" value="Scheduler.war" />
 	<property file="build.properties"/>
 
 

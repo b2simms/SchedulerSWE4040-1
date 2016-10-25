@@ -21,7 +21,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<!-- Project detailes -->
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>Bookmarks</artifactId>
+	<artifactId>SchedulerSWE40404</artifactId>
 	<packaging>war</packaging>
 	<name>Apache Wink Examples Apps :: Bookmarks</name>
 	<parent>

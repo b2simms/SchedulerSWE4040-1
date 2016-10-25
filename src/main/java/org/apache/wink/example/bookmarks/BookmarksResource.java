@@ -46,6 +46,9 @@ import org.apache.wink.common.model.synd.SyndFeed;
 import org.apache.wink.common.model.synd.SyndText;
 import org.apache.wink.server.utils.LinkBuilders;
 
+
+import java.sql.*;
+
 @Workspace(workspaceTitle = "Demo Bookmarks Service", collectionTitle = "My Bookmarks")
 @Path("bookmarks")
 public class BookmarksResource {
@@ -53,6 +56,46 @@ public class BookmarksResource {
     private static final String BOOKMARK          = "bookmark";
     private static final String SUB_RESOURCE_PATH = "{" + BOOKMARK + "}";
 
+    
+    @Path("/hello")
+    @GET
+    @Produces( {MediaType.APPLICATION_ATOM_XML})
+    public String getHello() {
+    	
+    	String hello = "Return:";
+    	
+    	Connection con = null;
+    	
+    	try{  
+    		
+    		//step1 load the driver class  
+    		Class.forName("oracle.jdbc.driver.OracleDriver");  
+    		  
+    		//step2 create  the connection object  
+    		con = DriverManager.getConnection(  
+    		"jdbc:oracle:thin:@localhost:1521:xe","system","TonThefloor22T");  
+    		  
+    		//step3 create the statement object  
+    		Statement stmt = con.createStatement();  
+    		  
+    		//step4 execute query  
+    		ResultSet rs=stmt.executeQuery("select * from users");  
+    		while(rs.next())  {
+    			//hello += rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3) + "\n"; 
+    			hello += rs.getString(2)+"  "+rs.getString(3);
+    		}
+    		  
+    		}catch(Exception e){ 
+    			return "ERROR: " + e.toString();
+    		}finally{
+    			//step5 close the connection object  
+        		try {
+					con.close();} catch (Exception e){}
+    		}
+    		  
+        return hello;
+    }
+    
     /**
      * This method is invoked when the HTTP GET method is issued by the client.
      * This occurs only when the requested representation (Http Accept header)
